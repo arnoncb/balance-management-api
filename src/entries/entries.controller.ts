@@ -21,7 +21,7 @@ export class EntriesController {
     return this.entriesService.create(createEntryDto);
   }
 
-  @Post()
+  @Post(':list')
   findAll(@Body('userId') userId: string) {
     if (!userId) {
       throw new BadRequestException('UserId is required');
