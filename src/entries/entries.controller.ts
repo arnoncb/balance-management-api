@@ -21,8 +21,8 @@ export class EntriesController {
     return this.entriesService.create(createEntryDto);
   }
 
-  @Get()
-  findAll(@Param('userId') userId: string) {
+  @Post()
+  findAll(@Body('userId') userId: string) {
     if (!userId) {
       throw new BadRequestException('UserId is required');
     }
