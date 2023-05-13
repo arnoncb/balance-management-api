@@ -14,11 +14,12 @@ export class EntriesService {
   create(createEntryDto: CreateEntryDto) {
     const entry = new this.entryModel(createEntryDto);
     entry.amount = createEntryDto.amount;
+    entry.userId = createEntryDto.userId;
     return entry.save();
   }
 
-  findAll() {
-    return this.entryModel.find();
+  findAll(userId: string) {
+    return this.entryModel.find({ userId });
   }
 
   findOne(id: string) {

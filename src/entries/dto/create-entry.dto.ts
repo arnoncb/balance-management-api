@@ -10,5 +10,8 @@ export class CreateEntryDto {
   @IsNotEmpty()
   type: string;
 
+  @IsNotEmpty()
+  userId: string;
+
   description: string;
 }

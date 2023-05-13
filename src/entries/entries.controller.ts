@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  BadRequestException,
 } from '@nestjs/common';
 import { EntriesService } from './entries.service';
 import { CreateEntryDto } from './dto/create-entry.dto';
@@ -21,8 +22,11 @@ export class EntriesController {
   }
 
   @Get()
-  findAll() {
-    return this.entriesService.findAll();
+  findAll(@Body('userId') userId: string) {
+    if (!userId) {
+      throw new BadRequestException('UserId is required');
+    }
+    return this.entriesService.findAll(userId);
   }
 
   @Get(':id')
