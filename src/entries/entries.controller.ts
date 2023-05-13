@@ -22,7 +22,7 @@ export class EntriesController {
   }
 
   @Get()
-  findAll(@Body('userId') userId: string) {
+  findAll(@Param('userId') userId: string) {
     if (!userId) {
       throw new BadRequestException('UserId is required');
     }
